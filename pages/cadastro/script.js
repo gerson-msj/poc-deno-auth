@@ -17,7 +17,7 @@
             senha: senha.value
         };
 
-        const request = await fetch("../api/login", {
+        const request = await fetch("/api/login", {
             method: "POST",
             body: JSON.stringify(login),
             headers: {

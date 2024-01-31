@@ -6,6 +6,7 @@ import {
 export default class LoginController extends BaseController {
 
     public handle(context: Context): Promise<Response> {
+
         if (context.url.pathname !== "/api/login") {
             return super.handle(context);
         }
@@ -16,10 +17,6 @@ export default class LoginController extends BaseController {
             return super.handle(context);
         }
     }
-
-
-// headers origin referer
-
 
     private post(context: Context): Promise<Response> {
 
