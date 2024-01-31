@@ -1,0 +1,9 @@
+@import "./form.css";
+
+* {
+    box-sizing: border-box;
+}
+
+nav {
+    margin-bottom: 25px;
+}

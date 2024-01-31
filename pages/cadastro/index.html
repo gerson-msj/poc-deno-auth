@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth - Cadastro</title>
+    <base href="/cadastro/">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <h1>Auth - Cadastro</h1>
+    <nav>
+        <a href="../home/">Home</a>
+    </nav>
+    <form>
+        <div class="field">
+            <label>Nome</label>
+            <input type="text" id="nome" autocomplete="username" />
+        </div>
+
+        <div class="field">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" autocomplete="new-password" />
+        </div>
+
+        <div class="btn">
+            <button type="button" id="enviar">Enviar</button>
+            <button type="reset" id="cancelar">Cancelar</button>
+        </div>
+
+        <div>
+            <p id="visor">&nbsp;</p>
+        </div>
+    </form>
+
+    <script type="module" src="./script.js"></script>
+</body>
+
+</html>

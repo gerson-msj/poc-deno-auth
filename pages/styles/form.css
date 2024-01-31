@@ -1,0 +1,25 @@
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.field label {
+    margin: 0 0 0 10px;
+}
+
+.field input {
+    width: 250px;
+    margin: 0 5px 0 5px;
+}
+
+.btn {
+    display: flex;
+    flex-direction: row;
+    margin: 25px 0 25px 0;
+}
+
+.btn button {
+    width: 120px;
+    margin: 0 5px 0 5px;
+}
