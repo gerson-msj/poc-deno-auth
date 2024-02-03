@@ -10,7 +10,7 @@
 
     async function onEnviar() {
 
-        visor.value = "";
+        visor.innertext = "";
 
         const login = {
             nome: nome.value,
@@ -32,10 +32,10 @@
             localStorage.setItem("nome", nome.value);
             nome.value = "";
             senha.value = "";
-            alert("Cadastro realizado com sucesso!");
-            location.href = "../login/";
+            alert(data.message);
+            location.href = "../home/";
         } else {
-            visor.value = data.message;
+            visor.innerText = data.message;
         }
     }
 

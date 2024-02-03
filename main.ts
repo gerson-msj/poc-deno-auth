@@ -1,9 +1,16 @@
-import { BaseController, PageController, Context } from "https://deno.land/x/deno_msj_controllers@1.0.0/mod.ts";
+import { PageController, Context } from "https://deno.land/x/deno_msj_controllers@1.0.0/mod.ts";
 import LoginController from "./api/controllers/LoginController.ts";
+import CadastroModel from "./api/models/CadastroModel.ts";
 
-const controllers = BaseController.enlistHandlers(
-    PageController,
-    LoginController
-);
+const pageController = new PageController();
+const cadastros: CadastroModel[] = [];
 
-Deno.serve((request: Request): Promise<Response> => controllers.handle(new Context(request)));
+Deno.serve((request: Request): Promise<Response> => {
+
+    const loginController = new LoginController(cadastros);
+    
+    pageController
+        .setNext(loginController);
+    
+    return pageController.handle(new Context(request))
+});
