@@ -1,14 +1,16 @@
 {
     /** @type {HTMLInputElement} */ const nome = document.querySelector("#nome");
     /** @type {HTMLInputElement} */ const senha = document.querySelector("#senha");
-    /** @type {HTMLButtonElement} */ const enviar = document.querySelector("#enviar");
+    /** @type {HTMLButtonElement} */ const autenticar = document.querySelector("#autenticar");
     /** @type {HTMLParagraphElement} */ const visor = document.querySelector("#visor");
 
     function main() {
-        enviar.onclick = () => onEnviar();
+        autenticar.onclick = () => onAutenticar();
+        nome.value = localStorage.getItem("nome") ?? "";
+        senha.value = "";
     }
 
-    async function onEnviar() {
+    async function onAutenticar() {
 
         visor.innertext = "";
 
@@ -17,23 +19,20 @@
             senha: senha.value
         };
 
-        const request = await fetch("/api/cadastro", {
+        const request = await fetch("/api/login", {
             method: "POST",
             body: JSON.stringify(login),
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Basic " + btoa("deno:api")
-            }
+            headers: { "Content-Type": "application/json" }
         });
 
         const data = await request.json();
 
         if (request.ok) {
-            localStorage.setItem("nome", nome.value);
             nome.value = "";
             senha.value = "";
-            alert("Cadastro realizado com sucesso.");
-            location.href = "../login/";
+            alert(data.message);
+            localStorage.setItem("token", data.message);
+            location.href = "../painel/";
         } else {
             visor.innerText = data.message;
         }

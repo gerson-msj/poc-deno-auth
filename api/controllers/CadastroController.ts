@@ -6,7 +6,7 @@ import {
 import CadastroModel from "../models/CadastroModel.ts";
 
 
-export default class LoginController extends BaseController {
+export default class CadastroController extends BaseController {
 
     private cadastros: CadastroModel[] = [];
 
@@ -17,7 +17,7 @@ export default class LoginController extends BaseController {
 
     public handle(context: Context): Promise<Response> {
 
-        if (context.url.pathname !== "/api/login") {
+        if (context.url.pathname !== "/api/cadastro") {
             return super.handle(context);
         }
 
@@ -32,13 +32,12 @@ export default class LoginController extends BaseController {
 
         try {
             const data = await context.request.json();
-            const login = new CadastroModel(data.nome, data.senha);
-            const cadastro = this.cadastros.find(c => c.Nome == login.Nome && c.Senha == login.Senha);
-            if(!cadastro) {
-                return this.badRequest("O usuário ou senha informado é inválido!");
+            const cadastro = new CadastroModel(data.nome, data.senha);
+            if(this.cadastros.some(c => c.Nome == cadastro.Nome)) {
+                return this.badRequest("O usuário informado já existe!");
             }
 
-
+            this.cadastros.push(cadastro);
 
             return this.ok(`Cadastro realizado com sucesso. Usuários cadastrados: ${this.cadastros.length}.`);
         } catch (error) {

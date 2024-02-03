@@ -4,12 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auth - Login</title>
-    <!-- <base href="/login/"> -->
+    <base href="/login/">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <h1>Auth - Login</h1>
     <nav>
         <a href="../home/">Home</a>
     </nav>
+
+    <form>
+        <div class="field">
+            <label>Nome</label>
+            <input type="text" id="nome" autocomplete="username" />
+        </div>
+
+        <div class="field">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" autocomplete="current-password" />
+        </div>
+
+        <div class="btn">
+            <button type="button" id="autenticar">Autenticar</button>
+            <button type="reset" id="cancelar">Cancelar</button>
+        </div>
+
+        <div>
+            <p id="visor">&nbsp;</p>
+        </div>
+    </form>
+
+    <script type="module" src="./script.js"></script>
+
 </body>
 </html>
